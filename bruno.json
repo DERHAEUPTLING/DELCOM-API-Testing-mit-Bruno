@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "DELCOM Events API für UP-Sport",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
