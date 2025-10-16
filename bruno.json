@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "name": "DELCOM Events API für UP-Sport",
+  "name": "DELCOM Events API für UR-Sport",
   "type": "collection",
   "ignore": [
     "node_modules",
