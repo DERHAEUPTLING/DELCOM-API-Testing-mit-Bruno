@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: https://storage.googleapis.com/static.production.regensburg.delcom.nl/product/68dd9c82-e5cf-46a4-addd-f7a0a9b1ae8c
+  url: https://storage.googleapis.com/static.production.regensburg.delcom.nl/{{img_name}}
   body: none
   auth: none
+}
+
+vars:pre-request {
+  img_name: product/74dcc4f5-972f-4b36-bd9f-25f5b0124504
 }
 
 settings {
