@@ -5,17 +5,18 @@ meta {
 }
 
 get {
-  url: {{base_url}}/public/tags?s={"level":{{level}}}
+  url: {{base_url}}/public/tags?s={"activeState":{{state}},"level": { "$in": [{{level}}] }}
   body: none
   auth: none
 }
 
 params:query {
-  s: {"level":{{level}}}
+  s: {"activeState":{{state}},"level": { "$in": [{{level}}] }}
 }
 
 vars:pre-request {
-  level: 3
+  state: false
+  level: 1,2
 }
 
 settings {
