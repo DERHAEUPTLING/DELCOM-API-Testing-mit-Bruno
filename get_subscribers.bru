@@ -1,13 +1,13 @@
 meta {
   name: get_subscribers
   type: http
-  seq: 5
+  seq: 4
 }
 
 get {
   url: {{base_url}}/subscribers?s={"memberId":{{memberId}}}&join=subscription&join=saleItem&join=subscription.translations
   body: none
-  auth: inherit
+  auth: none
 }
 
 params:query {

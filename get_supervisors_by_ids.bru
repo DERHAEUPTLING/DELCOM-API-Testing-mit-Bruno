@@ -1,13 +1,13 @@
 meta {
   name: get_supervisors_by_ids
   type: http
-  seq: 4
+  seq: 3
 }
 
 get {
   url: {{base_url}}/bookings/query/supervisorNamesByBookingId?bookingIds={{ids_from_bookings}}
   body: none
-  auth: inherit
+  auth: none
 }
 
 params:query {

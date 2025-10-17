@@ -1,24 +1,24 @@
 meta {
   name: get_bookings_by_startdates
   type: http
-  seq: 4
+  seq: 1
 }
 
 get {
-  url: {{base_url}}/bookings?s={"startDate":{"$gte":"{{date}}"},"linkedProductId":{"$notin":[{{notin}}]},"status":{"$ne":{{status}}}}&limit={{limit}}&page={{page}}&sort=startDate,ASC
+  url: {{base_url}}/bookings?s={"startDate":{"$gte":"{{date}}T22:00:00.000Z"},"linkedProductId":{"$notin":[{{notin}}]},"status":{"$ne":{{status}}}}&limit={{limit}}&page={{page}}&sort=startDate,ASC
   body: none
-  auth: inherit
+  auth: none
 }
 
 params:query {
-  s: {"startDate":{"$gte":"{{date}}"},"linkedProductId":{"$notin":[{{notin}}]},"status":{"$ne":{{status}}}}
+  s: {"startDate":{"$gte":"{{date}}T22:00:00.000Z"},"linkedProductId":{"$notin":[{{notin}}]},"status":{"$ne":{{status}}}}
   limit: {{limit}}
   page: {{page}}
   sort: startDate,ASC
 }
 
 vars:pre-request {
-  date: 2025-10-15T22:00:00.000Z
+  date: 2025-10-15
   notin: 0
   status: 2
   limit: 20
