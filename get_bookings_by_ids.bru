@@ -12,6 +12,11 @@ get {
 
 params:query {
   s: {"id":{"$in":[{{ids}}]}}
+  : 
+}
+
+vars:pre-request {
+  ids: 1
 }
 
 settings {
