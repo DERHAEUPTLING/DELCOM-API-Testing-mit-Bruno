@@ -1,0 +1,34 @@
+meta {
+  name: get_product
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/products?s={"id":{{id}}}&join=translations&join=childProducts&join=childProducts.translations&join=linkedSubscriptions&join=linkedSubscriptions.translations&join=parentBookableProducts&join=parentBookableProducts.translations&join=documents&join=childProducts.documents&join=surveyParents
+  body: none
+  auth: inherit
+}
+
+params:query {
+  s: {"id":{{id}}}
+  join: translations
+  join: childProducts
+  join: childProducts.translations
+  join: linkedSubscriptions
+  join: linkedSubscriptions.translations
+  join: parentBookableProducts
+  join: parentBookableProducts.translations
+  join: documents
+  join: childProducts.documents
+  join: surveyParents
+}
+
+vars:pre-request {
+  id: 78
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

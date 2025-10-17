@@ -1,16 +1,15 @@
 meta {
-  name: get_all_bookings
+  name: get_locations
   type: http
-  seq: 2
+  seq: 6
 }
 
 get {
-  url: {{base_url}}/bookings
+  url: /locations
   body: none
   auth: inherit
 }
 
 settings {
   encodeUrl: true
-  timeout: 0
 }

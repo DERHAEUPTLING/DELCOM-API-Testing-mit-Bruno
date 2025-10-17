@@ -1,17 +1,17 @@
 meta {
-  name: get_all_bookable_products
+  name: get_public_tags_and_docs
   type: http
-  seq: 7
+  seq: 6
 }
 
 get {
-  url: {{base_url}}/products?s={"bookable":true}
+  url: {{base_url}}/public/tags?join=documents
   body: none
   auth: inherit
 }
 
 params:query {
-  s: {"bookable":true}
+  join: documents
 }
 
 settings {

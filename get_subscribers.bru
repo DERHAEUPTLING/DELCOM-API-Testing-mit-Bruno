@@ -1,0 +1,27 @@
+meta {
+  name: get_subscribers
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{base_url}}/subscribers?s={"memberId":11170}&join=subscription&join=saleItem&join=subscription.translations
+  body: none
+  auth: inherit
+}
+
+params:query {
+  s: {"memberId":11170}
+  join: subscription
+  join: saleItem
+  join: subscription.translations
+}
+
+vars:pre-request {
+  memberId: 11170
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
