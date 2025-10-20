@@ -5,14 +5,14 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?join=documents&fields=documents.*
+  url: {{base_url}}/products?join=documents&fields=documents
   body: none
   auth: none
 }
 
 params:query {
   join: documents
-  fields: documents.*
+  fields: documents
 }
 
 settings {
