@@ -1,24 +1,23 @@
 meta {
-  name: get_products_all
+  name: public_tags_all
   type: http
-  seq: 3
+  seq: 2
 }
 
 get {
-  url: {{base_url}}/products?limit={{limit}}&page={{page}}&isCourse=true
+  url: {{base_url}}/public/tags?&limit={{limit}}&page={{page}}&isCourse=true
   body: none
-  auth: none
+  auth: inherit
 }
 
 params:query {
   limit: {{limit}}
   page: {{page}}
   isCourse: true
-  ~join: location
 }
 
 vars:pre-request {
-  limit: 30
+  limit: 10
   page: 1
 }
 

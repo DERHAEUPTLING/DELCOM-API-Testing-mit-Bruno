@@ -1,0 +1,29 @@
+meta {
+  name: bookings_for_meberId
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/bookings?s={"$or":[{"participations.memberId":{{memberId}}},{"participations.invitedMemberId":{{memberId}}}],"startDate":{"$gte":"{{startDate}}"}}&join=participations&limit=20&page=1&sort=startDate,ASC
+  body: none
+  auth: inherit
+}
+
+params:query {
+  s: {"$or":[{"participations.memberId":{{memberId}}},{"participations.invitedMemberId":{{memberId}}}],"startDate":{"$gte":"{{startDate}}"}}
+  join: participations
+  limit: 20
+  page: 1
+  sort: startDate,ASC
+}
+
+vars:pre-request {
+  memberId: 11170
+  startDate: 2025-10-20T07:46:08.515
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

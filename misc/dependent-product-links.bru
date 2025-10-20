@@ -1,0 +1,16 @@
+meta {
+  name: dependent-product-links
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/products/dependant-product-links
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

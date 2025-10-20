@@ -1,15 +1,16 @@
 meta {
   name: availableCourseTagsAndProductIds
   type: http
-  seq: 1
+  seq: 2
 }
 
 get {
-  url: https://backbone-web-api.production.regensburg.delcom.nl/courses/query/availableCourseTagsAndProductIds
+  url: {{base_url}}/courses/query/availableCourseTagsAndProductIds
   body: none
   auth: inherit
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

@@ -1,0 +1,25 @@
+meta {
+  name: subset=consumer
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{base_url}}/configuration-options?subset=consumer&limit={{limit}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  subset: consumer
+  limit: {{limit}}
+}
+
+vars:pre-request {
+  limit: 20
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
