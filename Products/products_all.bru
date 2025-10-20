@@ -18,7 +18,7 @@ params:query {
   join: documents
   join: tags
   s: {"isCourse":{{isCourse}}}
-  ~s: {"id":{"$in":[{{ids_from_bookings}}}
+  ~s: {"id":{"$in":[{{ids_from_bookings}}]}
   ~s: {"isCourse":{{isCourse}}, "id":{"$in":[{{ids_from_bookings}}]}}
 }
 
