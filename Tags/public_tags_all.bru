@@ -5,12 +5,13 @@ meta {
 }
 
 get {
-  url: {{base_url}}/public/tags?&limit={{limit}}&page={{page}}&isCourse=true
+  url: {{base_url}}/public/tags?s={"activeState":{{state}}}&limit={{limit}}&page={{page}}&isCourse=true
   body: none
   auth: inherit
 }
 
 params:query {
+  s: {"activeState":{{state}}}
   limit: {{limit}}
   page: {{page}}
   isCourse: true
@@ -19,6 +20,7 @@ params:query {
 vars:pre-request {
   limit: 10
   page: 1
+  state: true
 }
 
 settings {
