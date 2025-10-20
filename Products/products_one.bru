@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?s={"id":{{id}}}&join=translations&join=documents
+  url: {{base_url}}/products?s={"id":{{id}}}&join=translations&join=documents&join=childProducts&join=childProducts.translations&join=linkedSubscriptions&join=linkedSubscriptions.translations&join=parentBookableProducts&join=parentBookableProducts.translations&join=childProducts.documents&join=surveyParents
   body: none
   auth: none
 }
@@ -14,18 +14,18 @@ params:query {
   s: {"id":{{id}}}
   join: translations
   join: documents
-  ~join: childProducts
-  ~join: childProducts.translations
-  ~join: linkedSubscriptions
-  ~join: linkedSubscriptions.translations
-  ~join: parentBookableProducts
-  ~join: parentBookableProducts.translations
-  ~join: childProducts.documents
-  ~join: surveyParents
+  join: childProducts
+  join: childProducts.translations
+  join: linkedSubscriptions
+  join: linkedSubscriptions.translations
+  join: parentBookableProducts
+  join: parentBookableProducts.translations
+  join: childProducts.documents
+  join: surveyParents
 }
 
 vars:pre-request {
-  id: 233
+  id: 188
 }
 
 settings {

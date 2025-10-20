@@ -5,25 +5,31 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?s={"isCourse":{{isCourse}}, "id":{"$in":[{{ids_from_bookings}}]}}&limit={{limit}}&page={{page}}&isActive=1&join=location&join=documents&join=tags
+  url: {{base_url}}/products?limit={{limit}}&page={{page}}&isActive=1&join=location&join=documents&join=tags&s={"isCourse":{{isCourse}}}
   body: none
   auth: none
 }
 
 params:query {
-  s: {"isCourse":{{isCourse}}, "id":{"$in":[{{ids_from_bookings}}]}}
   limit: {{limit}}
   page: {{page}}
   isActive: 1
   join: location
   join: documents
   join: tags
+  s: {"isCourse":{{isCourse}}}
+  ~s: {"id":{"$in":[{{ids_from_bookings}}}
+  ~s: {"isCourse":{{isCourse}}, "id":{"$in":[{{ids_from_bookings}}]}}
 }
 
 vars:pre-request {
   limit: 30
   page: 1
   isCourse: true
+  search: "isCourse":{{isCourse}}, "id":{"$in":[{{ids_from_bookings}}]}
+  search_isCourse: "isCourse":{{isCourse}}
+  search_ids: , "id":{"$in":[{{ids_from_bookings}}]}
+  search_none: 
 }
 
 settings {
