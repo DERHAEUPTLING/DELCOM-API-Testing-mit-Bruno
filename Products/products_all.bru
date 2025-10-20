@@ -5,18 +5,19 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?s={"isCourse":{{isCourse}}}
+  url: {{base_url}}/products?s={"isCourse":{{isCourse}}, "id":{"$in":[{{ids_from_bookings}}]}}&limit={{limit}}&page={{page}}&isActive=1&join=location&join=documents&join=tags
   body: none
   auth: none
 }
 
 params:query {
-  s: {"isCourse":{{isCourse}}}
-  ~limit: {{limit}}
-  ~page: {{page}}
-  ~isActive: 1
-  ~join: location
-  ~join: documents
+  s: {"isCourse":{{isCourse}}, "id":{"$in":[{{ids_from_bookings}}]}}
+  limit: {{limit}}
+  page: {{page}}
+  isActive: 1
+  join: location
+  join: documents
+  join: tags
 }
 
 vars:pre-request {
