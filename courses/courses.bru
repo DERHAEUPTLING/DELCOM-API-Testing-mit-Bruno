@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{base_url}}/courses?limit=50&page=1&s={"availableFromDate":{"$lte":"{{availableFromDate}}"},"availableTillDate":{"$gte":"{{availableTillDate}}"}}
+  url: {{base_url}}/courses?limit=50&page=1&s={"id":3}
   body: none
   auth: inherit
 }
@@ -13,7 +13,8 @@ get {
 params:query {
   limit: 50
   page: 1
-  s: {"availableFromDate":{"$lte":"{{availableFromDate}}"},"availableTillDate":{"$gte":"{{availableTillDate}}"}}
+  s: {"id":3}
+  ~s: {"availableFromDate":{"$lte":"{{availableFromDate}}"},"availableTillDate":{"$gte":"{{availableTillDate}}"}}
   ~s: {"availableFromDate":{"$lte":"{{availableFromDate}}"},"availableTillDate":{"$gte":"{{availableTillDate}}"},"productId":{"$in":[{{ids}}]}}
   ~join: tags
   ~join: bookings
@@ -24,7 +25,7 @@ params:query {
 vars:pre-request {
   availableFromDate: 2025-10-21T21:59:59.999Z
   availableTillDate: 2025-10-20T22:00:00.000Z
-  ids: 53
+  ids: 32
 }
 
 settings {
