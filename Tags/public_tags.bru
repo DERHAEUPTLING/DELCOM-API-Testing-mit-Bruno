@@ -1,0 +1,31 @@
+meta {
+  name: public_tags
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/public/tags?limit={{limit}}&page={{page}}&isCourse=true&s={"activeState":{{state}},"level": { "$in": [{{level}}] }}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  limit: {{limit}}
+  page: {{page}}
+  isCourse: true
+  s: {"activeState":{{state}},"level": { "$in": [{{level}}] }}
+  ~s: {"activeState":{{state}}}
+}
+
+vars:pre-request {
+  limit: 10
+  page: 1
+  state: true
+  level: 1,2,3
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
