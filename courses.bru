@@ -1,0 +1,29 @@
+meta {
+  name: courses
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{base_url}}/courses?s={"availableFromDate":{"$lte":"{{availableFromDate}}"},"availableTillDate":{"$gte":"{{availableTillDate}}"},"productId":{"$in":[72]}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  s: {"availableFromDate":{"$lte":"{{availableFromDate}}"},"availableTillDate":{"$gte":"{{availableTillDate}}"},"productId":{"$in":[72]}}
+  ~join: bookings
+  ~limit: 50
+  ~page: 1
+  ~sort: productId,ASC
+}
+
+vars:pre-request {
+  availableFromDate: 2025-10-21T21:59:59.999Z
+  availableTillDate: 2025-10-20T22:00:00.000Z
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
