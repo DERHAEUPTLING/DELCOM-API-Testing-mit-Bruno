@@ -5,17 +5,17 @@ meta {
 }
 
 get {
-  url: {{base_url}}/courses?s={"availableFromDate":{"$lte":"{{availableFromDate}}"},"availableTillDate":{"$gte":"{{availableTillDate}}"},"productId":{"$in":[{{ids}}]}}&join=tags
+  url: {{base_url}}/courses?limit=50&page=1&s={"availableFromDate":{"$lte":"{{availableFromDate}}"},"availableTillDate":{"$gte":"{{availableTillDate}}"},"productId":{"$in":[{{ids}}]}}&join=tags
   body: none
   auth: inherit
 }
 
 params:query {
+  limit: 50
+  page: 1
   s: {"availableFromDate":{"$lte":"{{availableFromDate}}"},"availableTillDate":{"$gte":"{{availableTillDate}}"},"productId":{"$in":[{{ids}}]}}
   join: tags
   ~join: bookings
-  ~limit: 50
-  ~page: 1
   ~sort: productId,ASC
   ~join: linkedSubscriptions
 }

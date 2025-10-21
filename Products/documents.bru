@@ -5,14 +5,21 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?join=documents&fields=documents
+  url: {{base_url}}/products?limit={{limit}}&page={{page}}&join=documents&fields=documents
   body: none
   auth: none
 }
 
 params:query {
+  limit: {{limit}}
+  page: {{page}}
   join: documents
   fields: documents
+}
+
+vars:pre-request {
+  limit: 50
+  page: 1
 }
 
 settings {
