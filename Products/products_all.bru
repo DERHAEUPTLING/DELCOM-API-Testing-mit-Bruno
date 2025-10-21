@@ -24,7 +24,7 @@ params:query {
 }
 
 vars:pre-request {
-  limit: 30
+  limit: 20
   page: 1
   isCourse: true
   search: "isCourse":{{isCourse}}, "id":{"$in":[{{ids_from_bookings}}]}

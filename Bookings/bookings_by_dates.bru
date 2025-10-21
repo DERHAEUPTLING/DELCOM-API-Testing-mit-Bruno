@@ -1,0 +1,31 @@
+meta {
+  name: bookings_by_dates
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/bookings?s={"startDate":{"$gte":"{{date}}T00:00:00.000Z"}, {"endDate":{$lte":"{{date}}T23:59:59.999Z"}, "linkedProductId":{"$notin":[{{notin}}]},"status":{"$ne":{{status}}}}&sort=startDate,ASC
+  body: none
+  auth: none
+}
+
+params:query {
+  s: {"startDate":{"$gte":"{{date}}T00:00:00.000Z"}, {"endDate":{$lte":"{{date}}T23:59:59.999Z"}, "linkedProductId":{"$notin":[{{notin}}]},"status":{"$ne":{{status}}}}
+  sort: startDate,ASC
+  ~limit: {{limit}}
+  ~page: {{page}}
+}
+
+vars:pre-request {
+  date: 2025-10-21
+  notin: 0
+  status: 2
+  limit: 20
+  page: 1
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
