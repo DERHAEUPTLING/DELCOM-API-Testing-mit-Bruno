@@ -5,16 +5,17 @@ meta {
 }
 
 get {
-  url: {{base_url}}/bookings?s={"startDate":{"$gte":"{{date}}T00:00:00.000Z"},"endDate":{"$lte":"{{date}}T23:59:59.999Z"}, "linkedProductId":{"$notin":[{{notin}}]}}&sort=startDate,ASC&limit={{limit}}&page={{page}}
+  url: {{base_url}}/bookings?sort=startDate,ASC&limit={{limit}}&page={{page}}&s={"startDate":{"$gte":"{{date}}T00:00:00.000Z"},"endDate":{"$lte":"{{date}}T23:59:59.999Z"}, "linkedProductId":{"$notin":[{{notin}}]}}
   body: none
   auth: none
 }
 
 params:query {
-  s: {"startDate":{"$gte":"{{date}}T00:00:00.000Z"},"endDate":{"$lte":"{{date}}T23:59:59.999Z"}, "linkedProductId":{"$notin":[{{notin}}]}}
   sort: startDate,ASC
   limit: {{limit}}
   page: {{page}}
+  s: {"startDate":{"$gte":"{{date}}T00:00:00.000Z"},"endDate":{"$lte":"{{date}}T23:59:59.999Z"}, "linkedProductId":{"$notin":[{{notin}}]}}
+  ~s: {"linkedProductId":{"$in":[{{linkedProductId}}]}}
 }
 
 vars:pre-request {
@@ -23,6 +24,7 @@ vars:pre-request {
   date: 2025-10-22
   notin: 0
   status: 1
+  linkedProductId: 3
 }
 
 settings {
