@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?limit={{limit}}&page={{page}}&s={"id":{"$in":[{{ids_from_bookings}}]}}&join=tags&join=location&join=documents
+  url: {{base_url}}/products?limit={{limit}}&page={{page}}&s={"id":{"$in":[{{ids_from_bookings}}]}}&join=tags&join=location&join=documents&isActive=1
   body: none
   auth: none
 }
@@ -17,8 +17,8 @@ params:query {
   join: tags
   join: location
   join: documents
+  isActive: 1
   ~fields: description,tags,location,documents,startDate,slotMinutes
-  ~isActive: 1
   ~s: {"isActive":{{
   ~s: {"isCourse":{{isCourse}}}
   ~s: {"tags.id":{{tags.id}}}
