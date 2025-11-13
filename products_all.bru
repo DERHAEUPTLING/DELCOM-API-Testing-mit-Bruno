@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?limit={{limit}}&page={{page}}&s={"id":{"$in":[{{ids_from_bookings}}]}}&join=tags&join=location&join=documents&isActive=1
+  url: {{base_url}}/products?limit={{limit}}&page={{page}}&s={"id":{"$in":[{{ids_from_bookings}}]}}&join=tags&join=location&join=documents&join=translations&isActive=1&join=linkedSubscriptions
   body: none
   auth: none
 }
@@ -17,7 +17,9 @@ params:query {
   join: tags
   join: location
   join: documents
+  join: translations
   isActive: 1
+  join: linkedSubscriptions
   ~fields: description,tags,location,documents,startDate,slotMinutes
   ~s: {"isActive":{{
   ~s: {"isCourse":{{isCourse}}}
@@ -26,7 +28,7 @@ params:query {
 }
 
 vars:pre-request {
-  limit: 50
+  limit: 20
   page: 1
   isCourse: true
   search: "isCourse":{{isCourse}}, "id":{"$in":[{{ids_from_bookings}}]}

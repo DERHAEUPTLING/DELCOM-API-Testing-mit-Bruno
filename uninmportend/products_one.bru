@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?s={"id":{{id}}}&join=location&join=tags&join=translations&join=documents&join=childProducts&join=childProducts.translations&join=parentBookableProducts&join=parentBookableProducts.translations
+  url: {{base_url}}/products?s={"id":{{id}}}&join=location&join=tags&join=translations
   body: none
   auth: none
 }
@@ -15,11 +15,11 @@ params:query {
   join: location
   join: tags
   join: translations
-  join: documents
-  join: childProducts
-  join: childProducts.translations
-  join: parentBookableProducts
-  join: parentBookableProducts.translations
+  ~join: documents
+  ~join: childProducts
+  ~join: childProducts.translations
+  ~join: parentBookableProducts
+  ~join: parentBookableProducts.translations
   ~join: linkedSubscriptions
   ~join: linkedSubscriptions.translations
   ~join: childProducts.documents
