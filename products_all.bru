@@ -5,20 +5,19 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?s={"tags.id":39}&join=["tags","location","documents","translations"]
+  url: {{base_url}}/products?join=tags&join=location&join=documents&join=translations&s={ {{isActive}},{{isCourse}},{{tags}} }
   body: none
   auth: none
 }
 
 params:query {
-  s: {"tags.id":39}
-  join: ["tags","location","documents","translations"]
-  ~join: tags
-  ~join: location
-  ~join: documents
-  ~join: translations
+  join: tags
+  join: location
+  join: documents
+  join: translations
+  s: { {{isActive}},{{isCourse}},{{tags}} }
+  ~s: {"tags.id":39}
   ~s: { "id":139 }
-  ~s: { {{isActive}},{{isCourse}},{{tags}} }
   ~limit: 100
   ~page: 1
   ~fields: description,tags,location,documents,startDate,slotMinutes
