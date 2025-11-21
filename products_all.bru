@@ -5,36 +5,32 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?limit={{limit}}&page={{page}}&s={"id":{"$in":[{{ids_from_bookings}}]}}&join=tags&join=location&join=documents&join=translations&isActive=1&join=linkedSubscriptions
+  url: {{base_url}}/products?s={"tags.id":39}&join=["tags","location","documents","translations"]
   body: none
   auth: none
 }
 
 params:query {
-  limit: {{limit}}
-  page: {{page}}
-  s: {"id":{"$in":[{{ids_from_bookings}}]}}
-  join: tags
-  join: location
-  join: documents
-  join: translations
-  isActive: 1
-  join: linkedSubscriptions
+  s: {"tags.id":39}
+  join: ["tags","location","documents","translations"]
+  ~join: tags
+  ~join: location
+  ~join: documents
+  ~join: translations
+  ~s: { "id":139 }
+  ~s: { {{isActive}},{{isCourse}},{{tags}} }
+  ~limit: 100
+  ~page: 1
   ~fields: description,tags,location,documents,startDate,slotMinutes
-  ~s: {"isActive":{{
-  ~s: {"isCourse":{{isCourse}}}
-  ~s: {"tags.id":{{tags.id}}}
-  ~s: {"isCourse":{{isCourse}}, "id":{"$in":[{{ids_from_bookings}}]}}
+  ~join: linkedSubscriptions
+  ~s: {"id":{"$in":[3,14,15,10,9,11]}}
+  ~s: {"isCourse":true}
 }
 
 vars:pre-request {
-  limit: 20
-  page: 1
-  isCourse: true
-  search: "isCourse":{{isCourse}}, "id":{"$in":[{{ids_from_bookings}}]}
-  search_isCourse: "isCourse":{{isCourse}}
-  search_ids: , "id":{"$in":[{{ids_from_bookings}}]}
-  tags.id: 39
+  isActive: "isActive":1
+  isCourse: "isCourse":true
+  tags: "tags.id":39
 }
 
 settings {
