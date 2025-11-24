@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?join=tags&join=location&join=documents&join=translations&s={ {{isActive}},{{isCourse}},{{tags}} }
+  url: {{base_url}}/products?join=tags&join=location&join=documents&join=translations&fields=description,tags,location,documents,startDate,slotMinutes&s={ {{isActive}}, "tags.level":2}
   body: none
   auth: none
 }
@@ -15,12 +15,13 @@ params:query {
   join: location
   join: documents
   join: translations
-  s: { {{isActive}},{{isCourse}},{{tags}} }
+  fields: description,tags,location,documents,startDate,slotMinutes
+  s: { {{isActive}}, "tags.level":2}
+  ~s: { {{isActive}},{{isCourse}},{{tags}} }
   ~s: {"tags.id":39}
   ~s: { "id":139 }
   ~limit: 100
   ~page: 1
-  ~fields: description,tags,location,documents,startDate,slotMinutes
   ~join: linkedSubscriptions
   ~s: {"id":{"$in":[3,14,15,10,9,11]}}
   ~s: {"isCourse":true}
