@@ -5,15 +5,16 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?join=tags&fields=description,tags,location,documents,startDate,slotMinutes&s={ {{isActive}}, "tags.level":1, "bookable":false}
+  url: {{base_url}}/products?join=tags&s={ {{isActive}},"tags.activeState":true, "allowAsLinkedProduct":true }
   body: none
   auth: none
 }
 
 params:query {
   join: tags
-  fields: description,tags,location,documents,startDate,slotMinutes
-  s: { {{isActive}}, "tags.level":1, "bookable":false}
+  s: { {{isActive}},"tags.activeState":true, "allowAsLinkedProduct":true }
+  ~fields: description,tags,location,documents,startDate,slotMinutes
+  ~s: { {{isActive}}, "$or":[{"allowAsLinkedProduct":true} ,{ "isCourse":true }]}
   ~join: location
   ~join: documents
   ~join: translations
