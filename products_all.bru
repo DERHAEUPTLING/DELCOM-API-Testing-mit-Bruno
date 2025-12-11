@@ -5,27 +5,31 @@ meta {
 }
 
 get {
-  url: {{base_url}}/products?join=tags&s={ {{isActive}},"tags.activeState":true, "allowAsLinkedProduct":true }
+  url: {{base_url}}/products?join=tags&join=courses&join=documents&join=translations&s={"id":236}&join=linkedSubscriptions&join=linkedSubscriptions.translations
   body: none
   auth: none
 }
 
 params:query {
   join: tags
-  s: { {{isActive}},"tags.activeState":true, "allowAsLinkedProduct":true }
+  join: courses
+  join: documents
+  join: translations
+  s: {"id":236}
+  join: linkedSubscriptions
+  join: linkedSubscriptions.translations
+  ~s: {"isCourse":true}
+  ~join: products
+  ~s: { "description":"Acro Dance" }
   ~fields: description,tags,location,documents,startDate,slotMinutes
+  ~s: { {{isActive}},"tags.activeState":true, "allowAsLinkedProduct":true }
   ~s: { {{isActive}}, "$or":[{"allowAsLinkedProduct":true} ,{ "isCourse":true }]}
   ~join: location
-  ~join: documents
-  ~join: translations
   ~s: { {{isActive}},{{isCourse}},{{tags}} }
   ~s: {"tags.id":39}
-  ~s: { "id":29 }
   ~limit: 100
   ~page: 1
-  ~join: linkedSubscriptions
   ~s: {"id":{"$in":[3,14,15,10,9,11]}}
-  ~s: {"isCourse":true}
 }
 
 vars:pre-request {

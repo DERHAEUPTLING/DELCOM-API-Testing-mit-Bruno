@@ -5,17 +5,21 @@ meta {
 }
 
 get {
-  url: {{base_url}}/bookings?sort=startDate,ASC&limit=50&page=1&s={"startDate":{"$gte":"{{date}}T00:00:00.000Z"},"endDate":{"$lte":"{{date}}T23:59:59.999Z"}, "linkedProductId":{"$notin":[{{notin}}]}}
+  url: {{base_url}}/bookings?limit=60&page=1&s={"courseId":127}&join=product
   body: none
   auth: none
 }
 
 params:query {
-  sort: startDate,ASC
-  limit: 50
+  limit: 60
   page: 1
-  s: {"startDate":{"$gte":"{{date}}T00:00:00.000Z"},"endDate":{"$lte":"{{date}}T23:59:59.999Z"}, "linkedProductId":{"$notin":[{{notin}}]}}
+  s: {"courseId":127}
+  join: product
+  ~join: product.translations
   ~s: {"linkedProductId":{"$in":[{{linkedProductId}}]}}
+  ~fields: startDate,endDate
+  ~sort: startDate,ASC
+  ~s: {"startDate":{"$gte":"{{date}}T00:00:00.000Z"},"endDate":{"$lte":"{{date}}T23:59:59.999Z"}, "linkedProductId":{"$notin":[{{notin}}]}}
 }
 
 vars:pre-request {
