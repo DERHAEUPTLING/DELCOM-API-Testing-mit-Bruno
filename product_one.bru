@@ -1,23 +1,23 @@
 meta {
-  name: products_all
+  name: product_one
   type: http
-  seq: 3
+  seq: 4
 }
 
 get {
-  url: {{base_url}}/products?join=tags&join=courses&join=documents&join=translations&s={"id":236}&join=linkedSubscriptions&join=linkedSubscriptions.translations
+  url: {{base_url}}/products/:id?join=courses
   body: none
   auth: none
 }
 
 params:query {
-  join: tags
   join: courses
-  join: documents
-  join: translations
-  s: {"id":236}
-  join: linkedSubscriptions
-  join: linkedSubscriptions.translations
+  ~join: translations
+  ~join: documents
+  ~join: linkedSubscriptions
+  ~join: linkedSubscriptions.translations
+  ~join: tags
+  ~s: {"id":236}
   ~s: {"isCourse":true}
   ~join: products
   ~s: { "description":"Acro Dance" }
@@ -30,6 +30,10 @@ params:query {
   ~limit: 100
   ~page: 1
   ~s: {"id":{"$in":[3,14,15,10,9,11]}}
+}
+
+params:path {
+  id: 3
 }
 
 vars:pre-request {
